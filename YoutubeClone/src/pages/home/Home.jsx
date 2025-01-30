@@ -1,13 +1,13 @@
 import React from 'react'
 import './Home.css';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
-
-const home = () => {
+const Home = () => {
   return (
-    <div>
-           <h1>Jai Shree Ram</h1>
-    </div>
+    <>
+      <Sidebar/>
+    </>
   )
 }
 
-export default home
+export default Home;
