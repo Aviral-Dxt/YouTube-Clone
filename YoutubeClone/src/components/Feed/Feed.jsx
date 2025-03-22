@@ -11,6 +11,7 @@ import thumbnail7 from '../../assets/thumbnail7.png'
 import thumbnail8 from '../../assets/thumbnail8.png'
 
 const Feed = () => {
+
   return (
     <div className="feed">
 
@@ -69,6 +70,92 @@ const Feed = () => {
          <h3>TravellerHub</h3>
          <p>15k views &bull; 3 days ago</p>
       </div>
+
+      <div className='card'>
+         <img src={thumbnail1} alt="thumb1" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail2} alt="thumb2" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail3} alt="thumb3" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail4} alt="thumb4" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail5} alt="thumb5" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail6} alt="thumb6" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail7} alt="thumb7" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail8} alt="thumb8" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail1} alt="thumb1" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail2} alt="thumb2" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail3} alt="thumb3" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+
+      <div className='card'>
+         <img src={thumbnail4} alt="thumb4" />
+         <h2>Best location to visit in your holidays with your family and friends</h2>
+         <h3>TravellerHub</h3>
+         <p>15k views &bull; 3 days ago</p>
+      </div>
+       
+
 
     </div>
   )
