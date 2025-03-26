@@ -24,125 +24,126 @@ const PlayVideo = () => {
                     <span><img src={share} alt="share" /> share </span>
                     <span><img src={save} alt="save" /> save </span>
                 </div>
+            </div>
 
+            <hr />
+
+            <div className="publisher">
+                <img src={jack} alt="jack" />
+                <div>
+                    <p>ShaktiMan</p>
+                    <span>10M subscriber</span>
+                </div>
+                <button>Subscribe</button>
+            </div>
+
+            <div className="video-discription">
+                <p>Channel that makes us Happy</p>
+                <p>Subscribe Shaktiman to Watch more Episode to Transform your Life</p>
                 <hr />
-
-                <div className="publisher">
-                    <img src={jack} alt="jack" />
+                <h4>69 Comments</h4>
+                <div className="comments">
+                    <img src={user_profile} alt="user_profile" />
                     <div>
-                        <p>ShaktiMan</p>
-                        <span>10M subscriber</span>
+                        <h3>Jack Nicholson <span>2 days ago</span></h3>
+                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. </p>
+                        <div className="comment-action">
+                            <img src={like} alt="like" />
+                            <span>6969</span>
+
+                            <img src={dislike} alt="dislike" />
+                            <span>9</span>
+                        </div>
                     </div>
-                    <button>Subscribe</button>
                 </div>
 
-                <div className="video-discription">
-                    <p>Channel that makes us Happy</p>
-                    <p>Subscribe Shaktiman to Watch more Episode to Transform your Life</p>
-                    <hr />
-                    <h4>69 Comments</h4>
-                    <div className="comments">
-                        <img src={user_profile} alt="user_profile" />
-                        <div>
-                            <h3>Jack Nicholson <span>2 days ago</span></h3>
-                            <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                            <div className="comment-action">
-                                <img src={like} alt="like" />
-                                <span>6969</span>
+                <div className="comments">
+                    <img src={user_profile} alt="user_profile" />
+                    <div>
+                        <h3>Jack Nicholson <span>2 days ago</span></h3>
+                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
+                        <div className="comment-action">
+                            <img src={like} alt="like" />
+                            <span>6969</span>
 
-                                <img src={dislike} alt="dislike" />
-                                <span>9</span>
-                            </div>
+                            <img src={dislike} alt="dislike" />
+                            <span>9</span>
                         </div>
                     </div>
-
-                    <div className="comments">
-                        <img src={user_profile} alt="user_profile" />
-                        <div>
-                            <h3>Jack Nicholson <span>2 days ago</span></h3>
-                            <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                            <div className="comment-action">
-                                <img src={like} alt="like" />
-                                <span>6969</span>
-
-                                <img src={dislike} alt="dislike" />
-                                <span>9</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="comments">
-                        <img src={user_profile} alt="user_profile" />
-                        <div>
-                            <h3>Jack Nicholson <span>2 days ago</span></h3>
-                            <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                            <div className="comment-action">
-                                <img src={like} alt="like" />
-                                <span>6969</span>
-
-                                <img src={dislike} alt="dislike" />
-                                <span>9</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="comments">
-                        <img src={user_profile} alt="user_profile" />
-                        <div>
-                            <h3>Jack Nicholson <span>2 days ago</span></h3>
-                            <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                            <div className="comment-action">
-                                <img src={like} alt="like" />
-                                <span>6969</span>
-
-                                <img src={dislike} alt="dislike" />
-                                <span>9</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="comments">
-                        <img src={user_profile} alt="user_profile" />
-                        <div>
-                            <h3>Jack Nicholson <span>2 days ago</span></h3>
-                            <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                            <div className="comment-action">
-                                <img src={like} alt="like" />
-                                <span>6969</span>
-
-                                <img src={dislike} alt="dislike" />
-                                <span>9</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="comments">
-                        <img src={user_profile} alt="user_profile" />
-                        <div>
-                            <h3>Jack Nicholson <span>2 days ago</span></h3>
-                            <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                            <div className="comment-action">
-                                <img src={like} alt="like" />
-                                <span>6969</span>
-
-                                <img src={dislike} alt="dislike" />
-                                <span>9</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="comments">
-                        <img src={user_profile} alt="user_profile" />
-                        <div>
-                            <h3>Jack Nicholson <span>2 days ago</span></h3>
-                            <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                            <div className="comment-action">
-                                <img src={like} alt="like" />
-                                <span>6969</span>
-
-                                <img src={dislike} alt="dislike" />
-                                <span>9</span>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
+                <div className="comments">
+                    <img src={user_profile} alt="user_profile" />
+                    <div>
+                        <h3>Jack Nicholson <span>2 days ago</span></h3>
+                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
+                        <div className="comment-action">
+                            <img src={like} alt="like" />
+                            <span>6969</span>
+
+                            <img src={dislike} alt="dislike" />
+                            <span>9</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="comments">
+                    <img src={user_profile} alt="user_profile" />
+                    <div>
+                        <h3>Jack Nicholson <span>2 days ago</span></h3>
+                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
+                        <div className="comment-action">
+                            <img src={like} alt="like" />
+                            <span>6969</span>
+
+                            <img src={dislike} alt="dislike" />
+                            <span>9</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="comments">
+                    <img src={user_profile} alt="user_profile" />
+                    <div>
+                        <h3>Jack Nicholson <span>2 days ago</span></h3>
+                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
+                        <div className="comment-action">
+                            <img src={like} alt="like" />
+                            <span>6969</span>
+
+                            <img src={dislike} alt="dislike" />
+                            <span>9</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="comments">
+                    <img src={user_profile} alt="user_profile" />
+                    <div>
+                        <h3>Jack Nicholson <span>2 days ago</span></h3>
+                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
+                        <div className="comment-action">
+                            <img src={like} alt="like" />
+                            <span>6969</span>
+
+                            <img src={dislike} alt="dislike" />
+                            <span>9</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="comments">
+                    <img src={user_profile} alt="user_profile" />
+                    <div>
+                        <h3>Jack Nicholson <span>2 days ago</span></h3>
+                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
+                        <div className="comment-action">
+                            <img src={like} alt="like" />
+                            <span>6969</span>
+
+                            <img src={dislike} alt="dislike" />
+                            <span>9</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
 
 
             </div>
