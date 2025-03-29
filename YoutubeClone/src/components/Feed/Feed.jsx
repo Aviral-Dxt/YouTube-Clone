@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Feed.css';
-
+import moment from 'moment';
 import thumbnail1 from '../../assets/thumbnail1.png'
 import thumbnail2 from '../../assets/thumbnail2.png'
 import thumbnail3 from '../../assets/thumbnail3.png'
@@ -10,7 +10,7 @@ import thumbnail6 from '../../assets/thumbnail6.png'
 import thumbnail7 from '../../assets/thumbnail7.png'
 import thumbnail8 from '../../assets/thumbnail8.png'
 import { Link } from 'react-router-dom';
-import { API_KEY } from '../../Data';
+import { API_KEY, view_count_valueConverter } from '../../Data';
 
 
 
@@ -46,21 +46,21 @@ const Feed = ({ category }) => {
    return (
       <div className="feed">
 
-       {deta.map((item,index)=>{
-         return (
-             
-            <Link to={`video/20/4521`} className='card'>
-            <img src={thumbnail1} alt="thumb1" />
-            <h2>Best location to visit in your holidays with your family and friends</h2>
-            <h3>TravellerHub</h3>
-            <p>15k views &bull; 3 days ago</p>
-            
-         </Link >
+         {deta.map((item, index) => {
+            return (
 
-         )
-       })}
+               <Link to={`video/${item.snippet.categoryId}/${item.id}`} className='card'>
+                  <img src={item.snippet.thumbnails.medium.url} alt="VodeoImg" />
+                  <h2>{item.snippet.title}</h2>
+                  <h3>{item.snippet.channelTitle}</h3>
+                  <p>{view_count_valueConverter(item.statistics.viewCount)} &bull; {moment(item.snippet.publishedAt).fromNow()}</p>
+                    
+               </Link >
 
-        
+            )
+         })}
+
+
 
 
 
