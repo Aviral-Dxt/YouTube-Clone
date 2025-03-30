@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './PlayVideo.css'
 import video1 from '../../assets/video.mp4'
 import like from '../../assets/like.png'
@@ -7,20 +7,51 @@ import share from '../../assets/share.png'
 import save from '../../assets/save.png'
 import jack from '../../assets/jack.png'
 import user_profile from '../../assets/user_profile.jpg'
+import { API_KEY, view_count_valueConverter } from '../../Data'
+import moment from 'moment';
 
-const PlayVideo = () => {
+const PlayVideo = ({ videoId }) => {
 
+
+    const [videoDeta, setVideoDeta] = useState(null);
+
+    const url = ` https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
+
+    const fetchVideoDeta = async () => {
+
+        try {
+
+            const response = await fetch(url);
+            const deta = await response.json();
+            setVideoDeta(deta.items[0]);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+     
+    useEffect(()=>{
+        fetchVideoDeta()
+    },[videoId])
+
+   
+    
     return (
 
         <div className='play-video'>
 
-            <video src={video1} controls autoPlay muted ></video>
-            <h3>Best Youtube channel to Explore the World..!</h3>
+            {/* <video src={video1} controls autoPlay muted ></video> */}
+
+            <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+            <h3>{videoDeta?videoDeta.snippet.title : "Title Here"}</h3>
             <div className="play-video-info">
-                <p> 1890 views &bull , 2 days ago</p>
+                <p> {videoDeta?view_count_valueConverter(videoDeta.statistics.viewCount) : "199k"} views &bull , {videoDeta?moment(videoDeta.snippet.publishedAt).fromNow() : "3 days ago"}</p>
                 <div>
-                    <span><img src={like} alt="like" /> 169 </span>
-                    <span><img src={dislike} alt="dislike" /> 6 </span>
+                    <span><img src={like} alt="like" /> {videoDeta?view_count_valueConverter(videoDeta.statistics.likeCount) : "199k"} </span>
+                    <span><img src={dislike} alt="dislike" />  </span>
                     <span><img src={share} alt="share" /> share </span>
                     <span><img src={save} alt="save" /> save </span>
                 </div>
@@ -38,8 +69,7 @@ const PlayVideo = () => {
             </div>
 
             <div className="video-discription">
-                <p>Channel that makes us Happy</p>
-                <p>Subscribe Shaktiman to Watch more Episode to Transform your Life</p>
+                <p>{videoDeta ? videoDeta.snippet.description.slice(0,250) : "Description here"}</p>
                 <hr />
                 <h4>69 Comments</h4>
                 <div className="comments">
