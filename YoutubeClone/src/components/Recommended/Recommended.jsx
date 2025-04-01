@@ -13,6 +13,8 @@ import thumbnail8 from '../../assets/thumbnail8.png'
 const Recommended = () => {
     return (
         <div className='recommended'>
+
+            
             <div className="side-video-list">
                 <img src={thumbnail1} alt="thumbnail1" />
                 <div className="vid-info">

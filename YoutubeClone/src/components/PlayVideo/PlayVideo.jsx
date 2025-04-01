@@ -7,16 +7,25 @@ import share from '../../assets/share.png'
 import save from '../../assets/save.png'
 import jack from '../../assets/jack.png'
 import user_profile from '../../assets/user_profile.jpg'
-import { API_KEY, view_count_valueConverter } from '../../Data'
+import { API_KEY, valueConverter } from '../../Data'
 import moment from 'moment';
 
 const PlayVideo = ({ videoId }) => {
 
 
     const [videoDeta, setVideoDeta] = useState(null);
+    const [channelDeta, setchannelDeta] = useState(null);
+    const [commentDeta, setCommentDeta] = useState([]);
 
     const url = ` https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
 
+    // const channelDeta_url = ` `
+
+
+  
+
+
+    // fetching videoDeta 
     const fetchVideoDeta = async () => {
 
         try {
@@ -30,27 +39,61 @@ const PlayVideo = ({ videoId }) => {
         }
     }
 
-     
-    useEffect(()=>{
-        fetchVideoDeta()
-    },[videoId])
+
+
+
+    // function  channel deta like channel-logo, subscribers...etc 
+
+    // const fetchChannelDeta = async () => {
+
+    //     try {
+
+    //         const response = await fetch(channelDeta_url);
+    //         const deta = await response.json();
+    //         setchannelDeta(deta.items[0]);
+
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+
 
    
-    
+
+    const fetchOtherDeta = async () => {
+       
+            // fetching  comments deta 
+          const commentDeta_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${API_KEY}`
+          await fetch(commentDeta_url).then((res)=>res.json()).then((data)=>setCommentDeta(data.items))       
+    }
+
+
+    useEffect(() => {
+        fetchVideoDeta()
+    }, [])
+
+
+
+    useEffect(() => {
+        fetchOtherDeta()
+    }, [])
+
+
     return (
 
         <div className='play-video'>
 
+
             {/* <video src={video1} controls autoPlay muted ></video> */}
 
-            <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
 
-            <h3>{videoDeta?videoDeta.snippet.title : "Title Here"}</h3>
+            <h3>{videoDeta ? videoDeta.snippet.title : "Title Here"}</h3>
             <div className="play-video-info">
-                <p> {videoDeta?view_count_valueConverter(videoDeta.statistics.viewCount) : "199k"} views &bull , {videoDeta?moment(videoDeta.snippet.publishedAt).fromNow() : "3 days ago"}</p>
+                <p> {videoDeta ? valueConverter(videoDeta.statistics.viewCount) : "199k"} views &bull , {videoDeta ? moment(videoDeta.snippet.publishedAt).fromNow() : "3 days ago"}</p>
                 <div>
-                    <span><img src={like} alt="like" /> {videoDeta?view_count_valueConverter(videoDeta.statistics.likeCount) : "199k"} </span>
+                    <span><img src={like} alt="like" /> {videoDeta ? valueConverter(videoDeta.statistics.likeCount) : "199k"} </span>
                     <span><img src={dislike} alt="dislike" />  </span>
                     <span><img src={share} alt="share" /> share </span>
                     <span><img src={save} alt="save" /> save </span>
@@ -62,122 +105,46 @@ const PlayVideo = ({ videoId }) => {
             <div className="publisher">
                 <img src={jack} alt="jack" />
                 <div>
-                    <p>ShaktiMan</p>
+                    <p>{videoDeta ? videoDeta.snippet.channelTitle : ""}</p>
                     <span>10M subscriber</span>
                 </div>
                 <button>Subscribe</button>
             </div>
 
             <div className="video-discription">
-                <p>{videoDeta ? videoDeta.snippet.description.slice(0,250) : "Description here"}</p>
+                <p>{videoDeta ? videoDeta.snippet.description.slice(0, 250) : "Description here"}</p>
                 <hr />
-                <h4>69 Comments</h4>
-                <div className="comments">
-                    <img src={user_profile} alt="user_profile" />
-                    <div>
-                        <h3>Jack Nicholson <span>2 days ago</span></h3>
-                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. </p>
-                        <div className="comment-action">
-                            <img src={like} alt="like" />
-                            <span>6969</span>
+                <h4> {videoDeta ? videoDeta.statistics.commentCount : 169} Comments</h4>
 
-                            <img src={dislike} alt="dislike" />
-                            <span>9</span>
+                {commentDeta.map((item, index) => {
+
+                    return (
+
+                        <div key={index} className="comments">
+                            <img src={item?item.snippet.topLevelComment.snippet.authorProfileImageUrl : {user_profile}} alt="user_profile" />
+                            <div>
+                                <h3> {item.snippet.topLevelComment.snippet.authorDisplayName} <span>2 days ago</span></h3>
+                                <p>  {item.snippet.topLevelComment.snippet.textDisplay} </p>
+                                <div className="comment-action">
+                                    <img src={like} alt="like" />
+                                    <span>{valueConverter(item.snippet.topLevelComment.snippet.likeCount)}</span>
+
+                                    <img src={dislike} alt="dislike" />
+                                    <span>9</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div className="comments">
-                    <img src={user_profile} alt="user_profile" />
-                    <div>
-                        <h3>Jack Nicholson <span>2 days ago</span></h3>
-                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                        <div className="comment-action">
-                            <img src={like} alt="like" />
-                            <span>6969</span>
-
-                            <img src={dislike} alt="dislike" />
-                            <span>9</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="comments">
-                    <img src={user_profile} alt="user_profile" />
-                    <div>
-                        <h3>Jack Nicholson <span>2 days ago</span></h3>
-                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                        <div className="comment-action">
-                            <img src={like} alt="like" />
-                            <span>6969</span>
-
-                            <img src={dislike} alt="dislike" />
-                            <span>9</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="comments">
-                    <img src={user_profile} alt="user_profile" />
-                    <div>
-                        <h3>Jack Nicholson <span>2 days ago</span></h3>
-                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                        <div className="comment-action">
-                            <img src={like} alt="like" />
-                            <span>6969</span>
-
-                            <img src={dislike} alt="dislike" />
-                            <span>9</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="comments">
-                    <img src={user_profile} alt="user_profile" />
-                    <div>
-                        <h3>Jack Nicholson <span>2 days ago</span></h3>
-                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                        <div className="comment-action">
-                            <img src={like} alt="like" />
-                            <span>6969</span>
-
-                            <img src={dislike} alt="dislike" />
-                            <span>9</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="comments">
-                    <img src={user_profile} alt="user_profile" />
-                    <div>
-                        <h3>Jack Nicholson <span>2 days ago</span></h3>
-                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                        <div className="comment-action">
-                            <img src={like} alt="like" />
-                            <span>6969</span>
-
-                            <img src={dislike} alt="dislike" />
-                            <span>9</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="comments">
-                    <img src={user_profile} alt="user_profile" />
-                    <div>
-                        <h3>Jack Nicholson <span>2 days ago</span></h3>
-                        <p>"Shaktimaan was an iconic superhero show! Nostalgic vibes, great moral lessons, and Mukesh Khanna’s legendary performance. The storyline, action, and life lessons made it unforgettable. Truly a classic for every 90s kid!" 🚀🔥</p>
-                        <div className="comment-action">
-                            <img src={like} alt="like" />
-                            <span>6969</span>
-
-                            <img src={dislike} alt="dislike" />
-                            <span>9</span>
-                        </div>
-                    </div>
-                </div>
 
 
+                    )
 
+                })}
 
+                
 
             </div>
         </div>
+
 
     )
 }

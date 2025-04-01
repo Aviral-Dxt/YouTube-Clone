@@ -1,6 +1,6 @@
 export const API_KEY= 'AIzaSyDuZVRirvu44rmjCxByJkpTRtwoKQ-pN3Q';
 
-  export const  view_count_valueConverter = (value)=>{
+  export const  valueConverter = (value)=>{
         
     if(value>=1000000)
     {

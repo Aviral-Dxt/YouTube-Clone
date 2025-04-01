@@ -10,7 +10,7 @@ import thumbnail6 from '../../assets/thumbnail6.png'
 import thumbnail7 from '../../assets/thumbnail7.png'
 import thumbnail8 from '../../assets/thumbnail8.png'
 import { Link } from 'react-router-dom';
-import { API_KEY, view_count_valueConverter } from '../../Data';
+import { API_KEY, valueConverter } from '../../Data';
 
 
 
@@ -49,12 +49,12 @@ const Feed = ({ category }) => {
          {deta.map((item, index) => {
             return (
 
-               <Link to={`video/${item.snippet.categoryId}/${item.id}`} className='card'>
+               <Link key={item.id} to={`video/${item.snippet.categoryId}/${item.id}`} className='card'>
                   <img src={item.snippet.thumbnails.medium.url} alt="VodeoImg" />
                   <h2>{item.snippet.title}</h2>
                   <h3>{item.snippet.channelTitle}</h3>
-                  <p>{view_count_valueConverter(item.statistics.viewCount)} &bull; {moment(item.snippet.publishedAt).fromNow()}</p>
-                    
+                  <p>{valueConverter(item.statistics.viewCount)} &bull; {moment(item.snippet.publishedAt).fromNow()}</p>
+
                </Link >
 
             )
