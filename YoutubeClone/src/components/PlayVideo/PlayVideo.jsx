@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './PlayVideo.css'
-import video1 from '../../assets/video.mp4'
 import like from '../../assets/like.png'
 import dislike from '../../assets/dislike.png'
 import share from '../../assets/share.png'
@@ -9,8 +8,11 @@ import jack from '../../assets/jack.png'
 import user_profile from '../../assets/user_profile.jpg'
 import { API_KEY, valueConverter } from '../../Data'
 import moment from 'moment';
+import { useParams } from 'react-router-dom'
 
-const PlayVideo = ({ videoId }) => {
+const PlayVideo = () => {
+
+    const { videoId } = useParams();
 
 
     const [videoDeta, setVideoDeta] = useState(null);
@@ -22,7 +24,7 @@ const PlayVideo = ({ videoId }) => {
     // const channelDeta_url = ` `
 
 
-  
+
 
 
     // fetching videoDeta 
@@ -58,19 +60,19 @@ const PlayVideo = ({ videoId }) => {
     // }
 
 
-   
+
 
     const fetchOtherDeta = async () => {
-       
-            // fetching  comments deta 
-          const commentDeta_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${API_KEY}`
-          await fetch(commentDeta_url).then((res)=>res.json()).then((data)=>setCommentDeta(data.items))       
+
+        // fetching  comments deta 
+        const commentDeta_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${API_KEY}`
+        await fetch(commentDeta_url).then((res) => res.json()).then((data) => setCommentDeta(data.items))
     }
 
 
     useEffect(() => {
         fetchVideoDeta()
-    }, [])
+    }, [videoId])
 
 
 
@@ -121,7 +123,7 @@ const PlayVideo = ({ videoId }) => {
                     return (
 
                         <div key={index} className="comments">
-                            <img src={item?item.snippet.topLevelComment.snippet.authorProfileImageUrl : {user_profile}} alt="user_profile" />
+                            <img src={item ? item.snippet.topLevelComment.snippet.authorProfileImageUrl : { jack }} alt="user_profile" />
                             <div>
                                 <h3> {item.snippet.topLevelComment.snippet.authorDisplayName} <span>2 days ago</span></h3>
                                 <p>  {item.snippet.topLevelComment.snippet.textDisplay} </p>
@@ -140,7 +142,7 @@ const PlayVideo = ({ videoId }) => {
 
                 })}
 
-                
+
 
             </div>
         </div>
