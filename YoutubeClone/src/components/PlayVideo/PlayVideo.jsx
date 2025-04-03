@@ -21,17 +21,12 @@ const PlayVideo = () => {
 
     const url = ` https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
 
-    // const channelDeta_url = ` `
-
-
-
 
 
     // fetching videoDeta 
     const fetchVideoDeta = async () => {
 
         try {
-
             const response = await fetch(url);
             const deta = await response.json();
             setVideoDeta(deta.items[0]);
@@ -43,26 +38,15 @@ const PlayVideo = () => {
 
 
 
-
-    // function  channel deta like channel-logo, subscribers...etc 
-
-    // const fetchChannelDeta = async () => {
-
-    //     try {
-
-    //         const response = await fetch(channelDeta_url);
-    //         const deta = await response.json();
-    //         setchannelDeta(deta.items[0]);
-
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
-
-
-
     const fetchOtherDeta = async () => {
+
+        //function  channel deta like channel-logo, subscribers...etc 
+
+        const channelDeta_url = ` https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${videoDeta.snippet.channelId}&key=${API_KEY}`
+        await fetch(channelDeta_url).then((res) => res.json()).then(deta => setchannelDeta(deta.items[0]));
+
+
+
 
         // fetching  comments deta 
         const commentDeta_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${API_KEY}`
@@ -78,7 +62,7 @@ const PlayVideo = () => {
 
     useEffect(() => {
         fetchOtherDeta()
-    }, [])
+    }, [videoDeta])
 
 
     return (
@@ -105,10 +89,10 @@ const PlayVideo = () => {
             <hr />
 
             <div className="publisher">
-                <img src={jack} alt="jack" />
+                <img src={channelDeta ? channelDeta.snippet.thumbnails.default.url : { user_profile }} alt="jack" />
                 <div>
                     <p>{videoDeta ? videoDeta.snippet.channelTitle : ""}</p>
-                    <span>10M subscriber</span>
+                    <span>{channelDeta ? valueConverter(channelDeta.statistics.subscriberCount) : "1M"} subscriber</span>
                 </div>
                 <button>Subscribe</button>
             </div>
